@@ -284,10 +284,16 @@ class TweetMachineWidget
      */
     public function register_scripts()
     {
-        wp_enqueue_script('tweetMachine', TWEETMACHINE_BASE_URL.'js/tweetMachine.js', array('jquery'));
-        wp_enqueue_script('tweetMachine-widget-script', TWEETMACHINE_BASE_URL.'js/tweetMachineWidget.js', array('jquery','tweetMachine'));
         
-        //print_r($this->_config);
+        if( $this->_config['tweetMachine-use-css'] == 1 )
+        {
+            wp_enqueue_script('tweetMachine', TWEETMACHINE_BASE_URL.'js/tweetMachine.js', array('jquery'));            
+        }
+
+        if( $this->_config['tweetMachine-use-js'] == 1 )
+        {
+            wp_enqueue_script('tweetMachine-widget-script', TWEETMACHINE_BASE_URL.'js/tweetMachineWidget.js', array('jquery','tweetMachine'));
+        }
         
         $data = array(
             'tmBackend' => TWEETMACHINE_BASE_URL.'TweetMachineBackend.php',
@@ -307,7 +313,8 @@ class TweetMachineWidget
             'tmFormat' => stripcslashes($this->_config['tweetMachine-custom-format']),
         );
         
-        wp_localize_script('tweetMachine-widget-script', 'tweetMachineData', $data);
+        wp_localize_script('tweetMachine-widget-script', 'tweetMachineData', $data);  
+            
     }
 
     

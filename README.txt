@@ -53,7 +53,7 @@ Use the "Custom markup" field. Documentation for this is on the configuration pa
 
 The recommended way to do this is to add the URL to your replacement script on the configuration page. This actually makes it possible continue to use the configuration page as it is!
 The plugin uses [wp_localize_script()](http://codex.wordpress.org/Function_Reference/wp_localize_script) to inject the options form the configuration page into the Javascript. All options are saved into the `tweetMachineData` object. See the default loader for more details. 
-The other not recommended option is to disable the script loading in the plugin completely and load the script yourself. 
+The other not recommended option is to disable the script loading in the plugin completely and load the script yourself. If you do this and want to access the options, use "tweetMachine-widget-script" as the script handle in the `wp_enqueue_script()` call.
 For latest documentation, see the [jQuery Tweet Machine GitHub page](https://github.com/ryangiglio/jquery-tweetMachine).
 
 == Screenshots ==
